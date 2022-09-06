@@ -1,232 +1,135 @@
 #!/bin/bash
-dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
-biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
-#########################
-
-BURIQ () {
-    curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow > /root/tmp
-    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
-    for user in "${data[@]}"
-    do
-    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
-    d1=(`date -d "$exp" +%s`)
-    d2=(`date -d "$biji" +%s`)
-    exp2=$(( (d1 - d2) / 86400 ))
-    if [[ "$exp2" -le "0" ]]; then
-    echo $user > /etc/.$user.ini
-    else
-    rm -f /etc/.$user.ini > /dev/null 2>&1
-    fi
-    done
-    rm -f /root/tmp
-}
-
 MYIP=$(curl -sS ipv4.icanhazip.com)
+echo "Checking VPS"
+#########################
+IZIN=$(curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow | awk '{print $4}' | grep $MYIP)
+if [ $MYIP = $IZIN ]; then
+echo -e "\e[32mPermission Accepted...\e[0m"
+else
+echo -e "\e[31mPermission Denied!\e[0m";
+exit 0
+fi
+#EXPIRED
+expired=$(curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow | grep $MYIP | awk '{print $3}')
+echo $expired > /root/expired.txt
+today=$(date -d +1day +%Y-%m-%d)
+while read expired
+do
+	exp=$(echo $expired | curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow | grep $MYIP | awk '{print $3}')
+	if [[ $exp < $today ]]; then
+		Exp2="\033[1;31mExpired\033[0m"
+        else
+        Exp2=$(curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow | grep $MYIP | awk '{print $3}')
+	fi
+done < /root/expired.txt
+rm /root/expired.txt
 Name=$(curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow | grep $MYIP | awk '{print $2}')
-echo $Name > /usr/local/etc/.$Name.ini
-CekOne=$(cat /usr/local/etc/.$Name.ini)
-
-Bloman () {
-if [ -f "/etc/.$Name.ini" ]; then
-CekTwo=$(cat /etc/.$Name.ini)
-    if [ "$CekOne" = "$CekTwo" ]; then
-        res="Expired"
-    fi
-else
-res="Permission Accepted..."
+# Color Validation
+DF='\e[39m'
+Bold='\e[1m'
+Blink='\e[5m'
+yell='\e[33m'
+red='\e[31m'
+green='\e[32m'
+blue='\e[34m'
+PURPLE='\e[35m'
+cyan='\e[36m'
+Lred='\e[91m'
+Lgreen='\e[92m'
+Lyellow='\e[93m'
+NC='\e[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+LIGHT='\033[0;37m'
+# VPS Information
+#Domain
+domain=$(cat /etc/xray/domain)
+#Status certificate
+modifyTime=$(stat $HOME/.acme.sh/${domain}_ecc/${domain}.key | sed -n '7,6p' | awk '{print $2" "$3" "$4" "$5}')
+modifyTime1=$(date +%s -d "${modifyTime}")
+currentTime=$(date +%s)
+stampDiff=$(expr ${currentTime} - ${modifyTime1})
+days=$(expr ${stampDiff} / 86400)
+remainingDays=$(expr 90 - ${days})
+tlsStatus=${remainingDays}
+if [[ ${remainingDays} -le 0 ]]; then
+	tlsStatus="expired"
 fi
-}
-
-PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow | awk '{print $4}' | grep $MYIP)
-    if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
-    else
-    res="Permission Denied!"
-    fi
-    BURIQ
-}
-
-x="ok"
-
-cekray=`cat /root/log-install.txt | grep -ow "XRAY" | sort | uniq`
-if [ "$cekray" = "XRAY" ]; then
-rekk='XRAY'
-bec='xray'
-else
-rekk='V2RAY'
-bec='v2ray'
-fi
-
-PERMISSION
-
-if [ "$res" = "Expired" ]; then
-Exp="\e[36mExpired\033[0m"
-rm -f /home/needupdate > /dev/null 2>&1
-else
-Exp=$(curl -sS https://raw.githubusercontent.com/adammoi/anjim/main/anjay/allow | grep $MYIP | awk '{print $3}')
-fi
-clear
-echo -e "\e[36m╒════════════════════════════════════════════╕\033[0m"
-echo -e " \E[0;41;36m                 INFO SERVER                \E[0m"
-echo -e "\e[36m╘════════════════════════════════════════════╛\033[0m"
-uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
-upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
-uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
-cekup=`uptime -p | grep -ow "day"`
+# OS Uptime
+uptime="$(uptime -p | cut -d " " -f 2-10)"
+# Download
+#Download/Upload today
+dtoday="$(vnstat -i eth0 | grep "today" | awk '{print $2" "substr ($3, 1, 1)}')"
+utoday="$(vnstat -i eth0 | grep "today" | awk '{print $5" "substr ($6, 1, 1)}')"
+ttoday="$(vnstat -i eth0 | grep "today" | awk '{print $8" "substr ($9, 1, 1)}')"
+#Download/Upload yesterday
+dyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $2" "substr ($3, 1, 1)}')"
+uyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $5" "substr ($6, 1, 1)}')"
+tyest="$(vnstat -i eth0 | grep "yesterday" | awk '{print $8" "substr ($9, 1, 1)}')"
+#Download/Upload current month
+dmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $3" "substr ($4, 1, 1)}')"
+umon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $6" "substr ($7, 1, 1)}')"
+tmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $9" "substr ($10, 1, 1)}')"
+# Getting CPU Information
+cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
+cpu_usage+=" %"
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
+CITY=$(curl -s ipinfo.io/city )
+WKT=$(curl -s ipinfo.io/timezone )
+DAY=$(date +%A)
+DATE=$(date +%m/%d/%Y)
 IPVPS=$(curl -s ipinfo.io/ip )
-serverV=$( curl -sS https://raw.githubusercontent.com/adammoi/netnot/main/versi)
-
-if [ "$cekup" = "day" ]; then
-echo    -e   "System Uptime   :  $uphours $upminutes $uptimecek"
-else
-echo -e   "System Uptime   :  $uphours $upminutes"
-fi
-echo -e "Use Core        :  $rekk"
-echo -e "Current Domain  :  $(cat /etc/$bec/domain)"
-echo -e "IP-VPS          :  $IPVPS"
-echo -e "\e[36m╒════════════════════════════════════════════╕\033[0m"
-echo -e " \E[0;41;36m                 SSH MENU                   \E[0m"
-echo -e "\e[36m╘════════════════════════════════════════════╛\033[0m"
-echo -e " [\033[1;36m01\033[0m]  Add User SSH
- [\033[1;36m02\033[0m]  SSH WS Enable
- [\033[1;36m03\033[0m]  Cek User SSH
- [\033[1;36m04\033[0m]  Del User SSH
- [\033[1;36m05\033[0m]  Renew SSH
- [\033[1;36m06\033[0m]  Member
-\e[36m╒════════════════════════════════════════════╕\033[0m"
-echo -e " \E[0;41;36m                 XRAY MENU                  \E[0m"
-echo -e "\e[36m╘════════════════════════════════════════════╛\033[0m
- [\033[1;36m07\033[0m]  Add Vmess Account
- [\033[1;36m08\033[0m]  Add Vless Account
- [\033[1;36m09\033[0m]  Addd Trojan Account
- [\033[1;36m10\033[0m]  Add Sodosok Account
- [\033[1;36m11\033[0m]  Cek User Xray
- [\033[1;36m12\033[0m]  Del User Xray
- [\033[1;36m13\033[0m]  Renew User Xray"
-echo -e  "\e[36m╒════════════════════════════════════════════╕\033[0m"
-echo -e " \E[0;41;36m               Settings MENU                \E[0m"
-echo -e "\e[36m╘════════════════════════════════════════════╛\033[0m
- [\033[1;36m14\033[0m]  Add-host
- [\033[1;36m15\033[0m]  Gen SSL 
- [\033[1;36m16\033[0m]  Backup 
- [\033[1;36m17\033[0m]  Restore
- [\033[1;36m18\033[0m]  Xol Panel Bot
-"
-if [[ $(cat /opt/.ver) = $serverV ]] > /dev/null 2>&1; then
-echo -ne
-else
-echo -e "[\033[1;32m999\033[0m] • \033[0;31mUpdate Available ! Go choice 69 to update\033[0m"
-echo ""
-fi
-echo -e "\033[1;37mPress [ Ctrl+C ] • To-Exit-Script\033[0m"
-echo ""
-#echo -e "\e[36m╘════════════════════════════════════════════════════╛\033[0m"
-echo -e "\e[36m╒═════════════════════════════════════════════╕\033[0m"
-if [[ $(cat /opt/.ver) = $serverV ]] > /dev/null 2>&1; then
-echo -e "Version       :\033[1;36m $(cat /opt/.ver) Latest Version\e[0m"
-echo -e "Client Name   : $Name"
-echo -e "Expiry script : $Exp"
-rm -f /home/needupdate > /dev/null 2>&1
-else
-rm /dev/.permiss > /dev/null 2>&1
-touch /home/needupdate > /dev/null 2>&1
-echo -e "\033[0;33mVersion : $(cat /opt/.ver) Update available to $serverV\e[0m"
-echo -e "\e[36m╒═════════════════════════════════════════════╕\033[0m"
-echo ""
-echo -e "[ \033[0;31mChangelog\033[0m ]"
-curl -sS https://raw.githubusercontent.com/adammoi/netnot/main/cgl
-echo -e "
-"
-fi
-echo -e "\e[36m╘═════════════════════════════════════════════╛\033[0m"
-echo
-echo -ne "Select menu : "; read x
-if [[ $(cat /opt/.ver) = $serverV ]] > /dev/null 2>&1; then
-    if [[ $x -eq 1 ]]; then
-       usernew
-    elif [[ $x -eq 2 ]]; then
-       sshws
-    elif [[ $x -eq 3 ]]; then
-       cek
-    elif [[ $x -eq 4 ]]; then
-       hapus
-    elif [[ $x -eq 5 ]]; then
-       renew
-    elif [[ $x -eq 6 ]]; then
-       member
-    elif [[ $x -eq 7 ]]; then
-       add-ws
-    elif [[ $x -eq 8 ]]; then
-       add-vless
-    elif [[ $x -eq 9 ]]; then
-       add-tr
-    elif [[ $x -eq 10 ]]; then
-       add-ssws
-    elif [[ $x -eq 11 ]]; then
-       cek-user
-    elif [[ $x -eq 12 ]]; then
-       del-user
-    elif [[ $x -eq 13 ]]; then
-       renew-xray
-    elif [[ $x -eq 14 ]]; then
-       add-host
-    elif [[ $x -eq 15 ]]; then
-       crtv2ray
-    elif [[ $x -eq 16 ]]; then
-       bckp
-    elif [[ $x -eq 17 ]]; then
-       restore
-     elif [[ $x -eq 18 ]]; then
-       xolpanel
-    else
-       menu
-    fi
-else
-    if [[ $x -eq 69 ]]; then
-       wget -q -O /usr/bin/update-script "https://raw.githubusercontent.com/kmardhex/swip/main/dll/system/update-script.sh" && chmod +x /usr/bin/update-script
-       screen -S upds update-script
-       menu
-    elif [[ $x -eq 1 ]]; then
-       usernew
-    elif [[ $x -eq 2 ]]; then
-       sshws
-    elif [[ $x -eq 3 ]]; then
-       cek
-    elif [[ $x -eq 4 ]]; then
-       hapus
-    elif [[ $x -eq 5 ]]; then
-       renew
-    elif [[ $x -eq 6 ]]; then
-       member
-    elif [[ $x -eq 7 ]]; then
-       add-ws
-    elif [[ $x -eq 8 ]]; then
-       add-vless
-    elif [[ $x -eq 9 ]]; then
-       add-tr
-    elif [[ $x -eq 10 ]]; then
-       add-ssws
-    elif [[ $x -eq 11 ]]; then
-       cek-user
-    elif [[ $x -eq 12 ]]; then
-       del-user
-    elif [[ $x -eq 13 ]]; then
-       renew-xray
-    elif [[ $x -eq 13 ]]; then
-       renew-xray
-    elif [[ $x -eq 14 ]]; then
-       add-host
-    elif [[ $x -eq 15 ]]; then
-       crtv2ray
-    elif [[ $x -eq 16 ]]; then
-       bckp
-    elif [[ $x -eq 17 ]]; then
-       restore
-     elif [[ $x -eq 18 ]]; then
-       xolpanel
-    else
-       menu
-    fi
-fi
+cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
+cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
+freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
+tram=$( free -m | awk 'NR==2 {print $2}' )
+uram=$( free -m | awk 'NR==2 {print $3}' )
+fram=$( free -m | awk 'NR==2 {print $4}' )
+clear 
+echo -e "\e[33m                                                            \e[0m"
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "         • Since 14 June 2022 , I LOVE YOU •       "
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " █████╗ ██████╗  █████╗ ███╗   ███╗    ███████╗██╗     ██╗ █████╗" 
+echo -e "██╔══██╗██╔══██╗██╔══██╗████╗ ████║    ██╔════╝██║     ██║██╔══██╗"
+echo -e "███████║██║  ██║███████║██╔████╔██║    ███████╗██║     ██║███████║"
+echo -e "██╔══██║██║  ██║██╔══██║██║╚██╔╝██║    ╚════██║██║██   ██║██╔══██║"
+echo -e "██║  ██║██████╔╝██║  ██║██║ ╚═╝ ██║    ███████║██║╚█████╔╝██║  ██║"
+echo -e "╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝    ╚══════╝╚═╝ ╚════╝ ╚═╝  ╚═╝"
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "                                                                                         "
+echo -e "\e[33m Operating System     \e[0m:  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`	
+echo -e "\e[33m Total Amount Of RAM  \e[0m:  $tram MB"
+echo -e "\e[33m System Uptime        \e[0m:  $uptime "
+echo -e "\e[33m Isp Name             \e[0m:  $ISP"
+echo -e "\e[33m Domain               \e[0m:  $domain"	
+echo -e "\e[33m Ip Vps               \e[0m:  $IPVPS"	
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "                 • SCRIPT MENU •                 "
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " [\e[36m•1\e[0m] SSH & OpenVPN Menu  [\e[36m•5\e[0m] SYSTEM Menu"
+echo -e " [\e[36m•2\e[0m] Vmess Menu          [\e[36m•6\e[0m] Status Service"
+echo -e " [\e[36m•3\e[0m] Vless Menu          [\e[36m•7\e[0m] Clear RAM Cache"
+echo -e " [\e[36m•4\e[0m] Trojan Go Menu      [\e[36m•8\e[0m] Trojan GFW Menu"                  
+echo -e   ""
+echo -e   " Press x or [ Ctrl+C ] • To-Exit-Script"
+echo -e   ""
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e " \e[33mClient Name    \E[0m: $Name"
+echo -e " \e[33mScript Expired \E[0m: $Exp2"
+echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e   ""
+read -p " Select menu :  "  opt
+echo -e   ""
+case $opt in
+1) clear ; m-sshovpn ;;
+2) clear ; m-vmess ;;
+3) clear ; m-vless ;;
+4) clear ; m-trgo ;;
+5) clear ; m-system ;;
+6) clear ; running ;;
+7) clear ; clearcache ;;
+8) clear ; m-trojan ;;
+x) exit ;;
+esac
