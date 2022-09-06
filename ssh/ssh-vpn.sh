@@ -276,7 +276,8 @@ wget -O m-vmess "https://raw.githubusercontent.com/adammoi/anjim/main/menu/m-vme
 wget -O m-vless "https://raw.githubusercontent.com/adammoi/anjim/main/menu/m-vless.sh"
 wget -O running "https://raw.githubusercontent.com/adammoi/anjim/main/menu/running.sh"
 wget -O clearcache "https://raw.githubusercontent.com/adammoi/anjim/main/menu/clearcache.sh"
-
+wget -O m-trgo "https://raw.githubusercontent.com/adammoi/anjim/main/menu/m-trgo.sh"
+wget -O m-trojan "https://raw.githubusercontent.com/adammoi/anjim/main/menu/m-trojan.sh"
 
 # menu ssh ovpn
 wget -O m-sshovpn "https://raw.githubusercontent.com/adammoi/anjim/main/menu/m-sshovpn.sh"
@@ -319,6 +320,8 @@ chmod +x m-vmess
 chmod +x m-vless
 chmod +x running
 chmod +x clearcache
+chmod +x m-trgo
+chmod +x m-trojan
 
 chmod +x m-sshovpn
 chmod +x usernew
