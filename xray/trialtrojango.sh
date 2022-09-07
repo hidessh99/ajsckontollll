@@ -1,3 +1,6 @@
+MYIP=$(wget -qO- ipinfo.io/ip)
+domain=$(cat /etc/xray/domain)
+trgo="$(cat ~/log-install.txt | grep -w "Trojan Go" | cut -d: -f2|sed 's/ //g')"
 user=trial`</dev/urandom tr -dc X-Z0-9 | head -c4`
 uuid=$(cat /proc/sys/kernel/random/uuid)
 masaaktif=1
@@ -22,7 +25,7 @@ echo -e "Path       : /trojango" | tee -a /etc/log-create-user.log
 echo -e "Created    : $hariini" | tee -a /etc/log-create-user.log
 echo -e "Expired    : $exp" | tee -a /etc/log-create-user.log
 echo -e "========================="
-echo -e "Link TrGo  			: ${link}" | tee -a /etc/log-create-user.log
+echo -e "Link TrGo  		: ${link}" | tee -a /etc/log-create-user.log
 echo -e "Link TrGo (v2rayNG)	: ${link1}" | tee -a /etc/log-create-user.log
 echo -e "========================="
 echo -e "Script Mod By ADAM SIJA"
