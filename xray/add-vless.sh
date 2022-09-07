@@ -109,23 +109,23 @@ clear
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "\E[44;1;39m        Xray/Vless Account        \E[0m" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Remarks : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Domain : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "port TLS : $tls" | tee -a /etc/log-create-user.log
-echo -e "port none TLS : $none" | tee -a /etc/log-create-user.log
-echo -e "id : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "Encryption : none" | tee -a /etc/log-create-user.log
-echo -e "Network : ws" | tee -a /etc/log-create-user.log
-echo -e "Path : /vless" | tee -a /etc/log-create-user.log
-echo -e "Path : vless-grpc" | tee -a /etc/log-create-user.log
+echo -e "Remarks        : ${user}" | tee -a /etc/log-create-user.log
+echo -e "Domain         : ${domain}" | tee -a /etc/log-create-user.log
+echo -e "port TLS       : $tls" | tee -a /etc/log-create-user.log
+echo -e "port none TLS  : $none" | tee -a /etc/log-create-user.log
+echo -e "id             : ${uuid}" | tee -a /etc/log-create-user.log
+echo -e "Encryption     : none" | tee -a /etc/log-create-user.log
+echo -e "Network        : ws" | tee -a /etc/log-create-user.log
+echo -e "Path           : /vless" | tee -a /etc/log-create-user.log
+echo -e "Path           : vless-grpc" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link TLS : ${vlesslink1}" | tee -a /etc/log-create-user.log
+echo -e "Link TLS       : ${vlesslink1}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link none TLS : ${vlesslink2}" | tee -a /etc/log-create-user.log
+echo -e "Link none TLS  : ${vlesslink2}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC : ${vlesslink3}" | tee -a /etc/log-create-user.log
+echo -e "Link GRPC      : ${vlesslink3}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
+echo -e "Expired On     : $exp" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Press any key to back on menu"
