@@ -30,7 +30,7 @@ domain=$(cat /etc/xray/domain)
 else
 domain=$IP
 fi
-trgo="$(cat ~/log-install.txt | grep -w "TrojanGo" | cut -d: -f2|sed 's/ //g')"
+trgo="$(cat ~/log-install.txt | grep -w "Trojan Go" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 		read -rp "Password : " -e user
 		user_EXISTS=$(grep -w $user /etc/trojan-go/akun.conf | wc -l)
@@ -64,7 +64,7 @@ echo -e "Path       : /trojango" | tee -a /etc/log-create-user.log
 echo -e "Created    : $hariini" | tee -a /etc/log-create-user.log
 echo -e "Expired    : $exp" | tee -a /etc/log-create-user.log
 echo -e "========================="
-echo -e "Link TrGo  			: ${link}" | tee -a /etc/log-create-user.log
+echo -e "Link TrGo  		: ${link}" | tee -a /etc/log-create-user.log
 echo -e "Link TrGo (v2rayNG)	: ${link1}" | tee -a /etc/log-create-user.log
 echo -e "========================="
 echo -e "Script Mod By ADAM SIJA"
