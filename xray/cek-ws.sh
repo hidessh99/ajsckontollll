@@ -1,5 +1,4 @@
 #!/bin/bash
-# My Telegram : https://t.me/admmoi
 # ==========================================
 # Color
 RED='\033[0;31m'
