@@ -12,24 +12,24 @@ systemctl restart trojan-go.service
 link="trojan-go://${uuid}@isi_bug_disini:${trgo}/?sni=${domain}&type=ws&host=${domain}&path=%2Ftrojango#$user"
 link1="trojan://${uuid}@isi_bug_disini:${trgo}/?sni=${domain}&type=ws&host=${domain}&path=%2Ftrojango#$user"
 clear
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "\E[0;41;36m           Trial TROJAN GO          \E[0m" | tee -a /etc/log-create-user.log
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Remarks    : ${user}" | tee -a /etc/log-create-user.log
-echo -e "IP/Host    : ${MYIP}" | tee -a /etc/log-create-user.log
-echo -e "Address    : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "Port       : ${trgo}" | tee -a /etc/log-create-user.log
-echo -e "Key        : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "Encryption : none" | tee -a /etc/log-create-user.log
-echo -e "Path       : /trojango" | tee -a /etc/log-create-user.log
-echo -e "Created    : $hariini" | tee -a /etc/log-create-user.log
-echo -e "Expired    : $exp" | tee -a /etc/log-create-user.log
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[0;41;36m           Trial TROJAN GO          \E[0m"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "Remarks    : ${user}"
+echo -e "IP/Host    : ${MYIP}"
+echo -e "Address    : ${domain}"
+echo -e "Port       : ${trgo}"
+echo -e "Key        : ${uuid}"
+echo -e "Encryption : none"
+echo -e "Path       : /trojango"
+echo -e "Created    : $hariini"
+echo -e "Expired    : $exp"
 echo -e "========================="
-echo -e "Link TrGo  		: ${link}" | tee -a /etc/log-create-user.log
-echo -e "Link TrGo (v2rayNG)	: ${link1}" | tee -a /etc/log-create-user.log
+echo -e "Link TrGo  			: ${link}"
+echo -e "Link TrGo (v2rayNG)	: ${link1}"
 echo -e "========================="
 echo -e "Script Mod By ADAM SIJA"
-echo "" | tee -a /etc/log-create-user.log
+echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
 
 menu
