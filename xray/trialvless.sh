@@ -19,7 +19,7 @@ asu=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/vless",
       "type": "none",
       "host": "",
       "tls": "tls"
@@ -34,7 +34,7 @@ ask=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
-      "path": "/vmess",
+      "path": "/vless",
       "type": "none",
       "host": "",
       "tls": "none"
@@ -49,7 +49,7 @@ grpc=`cat<<EOF
       "id": "${uuid}",
       "aid": "0",
       "net": "grpc",
-      "path": "vmess-grpc",
+      "path": "vless-grpc",
       "type": "none",
       "host": "",
       "tls": "tls"
