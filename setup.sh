@@ -107,20 +107,14 @@ if [ "" = "$PKG_OK" ]; then
   sleep 1
   echo ""
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 1. apt update -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 2. apt upgrade -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 3. apt dist-upgrade -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 4. reboot"
+  echo -e "[ ${tyblue}NOTES${NC} ] TURU"
   sleep 1
   echo ""
   sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] After rebooting"
+  echo -e "[ ${tyblue}NOTES${NC} ] After Turu"
   sleep 1
   echo -e "[ ${tyblue}NOTES${NC} ] Then run this script again"
-  echo -e "[ ${tyblue}NOTES${NC} ] if you understand then tap enter now"
+  echo -e "[ ${tyblue}NOTES${NC} ] enter now"
   read
 else
   echo -e "[ ${green}INFO${NC} ] Oke installed"
@@ -256,7 +250,7 @@ gg="AM"
 fi
 curl -sS ifconfig.me > /etc/myipvps
 echo " "
-echo "=====================-[ bgs NETWORK ]-===================="
+echo "=====================-[ Bagoes Vpn ]-===================="
 echo ""
 echo "------------------------------------------------------------"
 echo ""
@@ -296,7 +290,7 @@ echo ""
 echo ""
 echo "------------------------------------------------------------"
 echo ""
-echo "===============-[ Script Created By ADAM SIJA ]-==============="
+echo "===============-[ Bagoes Vpn ]-==============="
 echo -e ""
 echo ""
 echo "" | tee -a log-install.txt
@@ -306,7 +300,7 @@ rm /root/insshws.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
 echo -e "
 "
-echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
+echo -ne "[ ${yell}WARNING${NC} ] reboot now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
 exit 0
