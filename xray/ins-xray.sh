@@ -451,7 +451,7 @@ END
 # Installing Trojan Go Service
 cat > /etc/systemd/system/trojan-go.service << END
 [Unit]
-Description=Trojan-Go Service Mod By ADAM SIJA
+Description=Trojan-Go Service Bagoes Vpn
 Documentation=github.com/adammoi/vipies
 After=network.target nss-lookup.target
 
