@@ -11,7 +11,7 @@ CEKEXPIRED () {
     exit 0
 fi
 }
-IZIN=$(curl -sS https://raw.githubusercontent.com/asibeesans/ajsc/main/anjay/allow | awk '{print $4}' | grep $MYIP)
+IZIN=$(curl -sS https://raw.githubusercontent.com/sibeesans/ajsc/main/anjay/allow | awk '{print $4}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
 echo -e "\e[32mPermission Accepted...\e[0m"
 CEKEXPIRED
@@ -46,5 +46,5 @@ case $opt in
 5) clear ; cek-tr ;;
 0) clear ; menu ;;
 x) exit ;;
-*) echo "Boh salah tekan, Sayang kedak Babi" ; sleep 1 ; m-trojan ;;
+*) echo "ASTAGFIRULLAH" ; sleep 1 ; m-trojan ;;
 esac
