@@ -1,5 +1,4 @@
 #!/bin/bash
-# My Telegram : https://t.me/Admmoi
 # ==========================================
 # Color
 RED='\033[0;31m'
@@ -60,4 +59,4 @@ echo "==============================="
 echo "Username  : $user"
 echo "Expired   : $exp4"
 echo "==============================="
-echo "Script By ADAM SIJA"
+echo "Script Bagoes Vpn"
