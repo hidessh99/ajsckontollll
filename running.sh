@@ -1,8 +1,8 @@
 #!/bin/bash
 # Welcome Information
 # Edition : Stable Edition V1.0
-# Author  : ADAM SIJA
-# (C) Copyright 2021-2022 By ADAM SIJA
+# Author  : Yth Bagoes
+# (C) Copyright 2021-2022 By Bagoes Vpn
 # =========================================
 
 # // Exporting Language to UTF-8
@@ -132,8 +132,8 @@ clear;clear;clear
 
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo -e "                ${YELLOW}(${NC}${GREEN} STATUS SERVICE INFORMATION ${NC}${YELLOW})${NC}"
-echo -e "         OWNER : ${GREEN}OTTIN NETWORK ${NC}${YELLOW}(${NC} ${GREEN}ADAM SIJA ${NC}${YELLOW})${NC}"
-echo -e "       © Copyright By OTTIN NETWORK ${YELLOW}(${NC} 2021-2022 ${YELLOW})${NC}"
+echo -e "         OWNER : ${GREEN}Bagoes Vpn ${NC}${YELLOW}(${NC} ${GREEN}Bagoes Vpn ${NC}${YELLOW})${NC}"
+echo -e "       © Copyright Bagoes Vpn ${YELLOW}(${NC} 2023-2033 ${YELLOW})${NC}"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo ""
 echo -e "${RED_BG}                     Sytem Information                    ${NC}"
