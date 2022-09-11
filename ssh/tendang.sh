@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script Mod by ADAM SIJA
+# Script Bagoes Vpn
 #!/bin/bash
 clear
 MAX=1
