@@ -615,7 +615,7 @@ wget -O cek-ws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/cek-w
 wget -O add-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-vless.sh" && chmod +x add-vless
 wget -O trialvless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/trialvless.sh" && chmod +x trialvless
 wget -O renew-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-vless.sh" && chmod +x renew-vless
-wget -O del-vless "https://raw.githubusercontent.com/adasibeesans/ajsc/main/xray/del-vless.sh" && chmod +x del-vless
+wget -O del-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-vless.sh" && chmod +x del-vless
 wget -O cek-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/cek-vless.sh" && chmod +x cek-vless
 
 # trojan
