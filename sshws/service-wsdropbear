@@ -1,5 +1,5 @@
 [Unit]
-Description=Websocket-OpenSSH By OTTIN NETWROK
+Description=Websocket-OpenSSH By Bagoes Vpn
 Documentation=https://google.com
 After=network.target nss-lookup.target
 
