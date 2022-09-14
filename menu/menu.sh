@@ -89,7 +89,7 @@ fram=$( free -m | awk 'NR==2 {print $4}' )
 clear 
 echo -e "\e[36m╒════════════════════════════════════════════╕\033[0m"
 echo -e " \E[0;41;36m		INFO SERVER VPS		\E[0m"
-echo -e " \E[0;41;36m		AUTO SC BAGOES VPN		\E[0m"
+echo -e " \E[0;41;36m	      AUTO SC BAGOES VPN		\E[0m"
 echo -e "\e[36m╘════════════════════════════════════════════╛\033[0m"
 echo -e "                                                                                         "
 echo -e "\e[33m Operating System     \e[0m:  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`	
@@ -105,10 +105,10 @@ echo -e " [\e[36m•1\e[0m] SSH & OpenVPN Menu"
 echo -e " [\e[36m•2\e[0m] Vmess Menu"
 echo -e " [\e[36m•3\e[0m] Vless Menu"
 echo -e " [\e[36m•4\e[0m] Trojan Go Menu"
+echo -e " [\e[36m•8\e[0m] Trojan GRPC Menu"
 echo -e " [\e[36m•5\e[0m] SYSTEM Menu"
 echo -e " [\e[36m•6\e[0m] Status Service"
 echo -e " [\e[36m•7\e[0m] Clear RAM Cache"
-echo -e " [\e[36m•8\e[0m] Trojan GRPC Menu"
 echo -e   ""
 echo -e   " Press x or [ Ctrl+C ] • To-Exit-Script"
 echo -e   ""
@@ -124,9 +124,9 @@ case $opt in
 2) clear ; m-vmess ;;
 3) clear ; m-vless ;;
 4) clear ; m-trgo ;;
-5) clear ; m-system ;;
-6) clear ; running ;;
-7) clear ; clearcache ;;
-8) clear ; m-trojan ;;
+5) clear ; m-trojan ;;
+6) clear ; m-system ;;
+7) clear ; running ;;
+8) clear ; clearcache ;;
 x) exit ;;
 esac
