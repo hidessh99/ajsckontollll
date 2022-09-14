@@ -58,4 +58,7 @@ echo "============================"
 echo "Username : $user"
 echo "Expired  : $exp"
 echo "============================"
-echo "Script Mod By ADAM SIJA"
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
+    fi
