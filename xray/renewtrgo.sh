@@ -57,9 +57,11 @@ sed -i "s/### $user $exp/### $user $exp4/g" /etc/trojan-go/akun.conf
 clear
 echo ""
 echo "============================"
-echo "  TrojanGo Account Renewed  "
+echo "  Trojan Go Account Renewed  "
 echo "============================"
 echo "Username : $user"
 echo "Expired  : $exp4"
 echo "=========================="
-echo "Script Bagoes Vpn"
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
