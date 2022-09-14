@@ -82,7 +82,6 @@ echo " The user-limit script not been executed."
 fi
 echo " ";
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo " ";
+echo ""
 read -n 1 -s -r -p "Press any key to back on menu"
-
-ssh-menu
+menu
