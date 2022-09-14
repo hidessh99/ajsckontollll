@@ -70,5 +70,4 @@ echo -e "========================="
 echo -e "Script Bagoes Vpn"
 echo "" | tee -a /etc/log-create-user.log
 read -n 1 -s -r -p "Press any key to back on menu"
-
 menu
