@@ -355,7 +355,7 @@ chmod +x bw
 
 chmod +x port-ssl
 chmod +x port-ovpn
-
+chmod +x port-tr
 chmod +x xp
 chmod +x asu
 chmod +x sshws
