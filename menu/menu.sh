@@ -89,7 +89,7 @@ fram=$( free -m | awk 'NR==2 {print $4}' )
 clear 
 echo -e "\e[36m╒════════════════════════════════════════════╕\033[0m"
 echo -e " \E[0;41;36m		INFO SERVER VPS		\E[0m"
-echo -e " \E[0;41;36m	      AUTO SC BAGOES VPN		\E[0m"
+echo -e " \E[0;41;36m	      AUTO SC BAGOES VPN	\E[0m"
 echo -e "\e[36m╘════════════════════════════════════════════╛\033[0m"
 echo -e "                                                                                         "
 echo -e "\e[33m Operating System     \e[0m:  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`	
