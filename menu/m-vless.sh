@@ -48,5 +48,5 @@ case $opt in
 5) clear ; cek-vless ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
-*) echo "Anda salah tekan " ; sleep 1 ; m-sshovpn ;;
+*) echo "salah tekan " ; sleep 1 ; m-sshovpn ;;
 esac
