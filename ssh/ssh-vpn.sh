@@ -313,6 +313,7 @@ wget -O bw "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/bw.sh"
 # change port
 wget -O port-ssl "https://raw.githubusercontent.com/sibeesans/ajsc/main/port/port-ssl.sh"
 wget -O port-ovpn "https://raw.githubusercontent.com/sibeesans/ajsc/main/port/port-ovpn.sh"
+wget -O port-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/port/port-tr.sh"
 
 
 wget -O xp "https://raw.githubusercontent.com/sibeesans/ajsc/main/ssh/xp.sh"
