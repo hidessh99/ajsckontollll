@@ -20,22 +20,20 @@ echo -e "${green}"
 echo -e "     1 ⸩  Ubah Port Stunnel4"
 echo -e "     2 ⸩  Ubah Port OpenVPN"
 echo -e "     3 ⸩  Ubah Port Trojan"
-echo -e "${off}"
-echo -e "${cyan}======================================${off}"
-echo -e "${green}"
-read -p "     Pilih Nomor [1-3 / x] :  " port
-echo -e "${off}"
-
-case $port in
-1)
-port-ssl
-;;
-2)
-port-ovpn
-;;
-3)
-port-tr
-;;
+echo -e ""
+echo -e " [\e[31m•0\e[0m] \e[31mBACK TO MENU\033[0m"
+echo ""
+echo -e   "Press x or [ Ctrl+C ] • To-Exit"
+echo -e   ""
+echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+read -p " Select menu : " opt
+echo -e ""
+case $opt in
+1) clear ; port-ssl ; exit ;;
+2) clear ; port-ovpn ; exit ;;
+3) clear ; port-tr ; exit ;;
+0) clear ; menu ; exit ;;
 x) exit ;;
 *) echo -e "" ; echo "Salah tekan ." ; sleep 1 ; port-change ;;
 esac
