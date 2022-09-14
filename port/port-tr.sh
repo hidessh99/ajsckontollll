@@ -25,8 +25,8 @@ echo -e "\e[31mPermission Denied!\e[0m";
 exit 0
 fi
 clear
-tr="$(cat ~/log-install.txt | grep -i "Trojan-GFW" | cut -d: -f2|sed 's/ //g')"
-echo -e "Name : Change Port Trojan-GFW"
+tr="$(cat ~/log-install.txt | grep -i "Trojan-GRPC" | cut -d: -f2|sed 's/ //g')"
+echo -e "Name : Change Port Trojan-GRPC"
 echo -e "========================="
 echo -e "Change Port    : $tr"
 read -p "New Port Trojan-GFW: " tr2
