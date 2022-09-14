@@ -181,7 +181,7 @@ echo ""
 wget -q https://raw.githubusercontent.com/sibeesans/ajsc/main/tools.sh;chmod +x tools.sh;./tools.sh
 rm tools.sh
 clear
-yellow "Add Domain for vmess/vless/trojan dll"
+yellow "Tambah Domain Buat vmess/vless/trojan dll"
 echo " "
 read -rp "Input ur domain : " -e pp
     if [ -z $pp ]; then
