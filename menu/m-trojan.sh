@@ -21,7 +21,7 @@ exit 0
 fi
 clear 
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;100;33m      • TROJAN GFW MENU •          \E[0m"
+echo -e "\E[0;100;33m      • TROJAN GRPC MENU •          \E[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e " [\e[36m•1\e[0m] Create Account Trojan "
@@ -41,10 +41,10 @@ echo -e ""
 case $opt in
 1) clear ; add-tr ;;
 2) clear ; trialtrojan ;;
-3) clear ; del-tr ;;
-4) clear ; renew-tr ;;
+3) clear ; renew-tr ;;
+4) clear ; del-tr ;;
 5) clear ; cek-tr ;;
 0) clear ; menu ;;
 x) exit ;;
-*) echo "ASTAGFIRULLAH" ; sleep 1 ; m-trojan ;;
+*) echo "SALAH TEKAN" ; sleep 1 ; m-trojan ;;
 esac
