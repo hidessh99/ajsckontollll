@@ -14,12 +14,11 @@ red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 clear
 echo -e ""
 echo -e "${cyan}======================================${off}"
-echo -e "            ${green}PENGATURAN PORT${off}"
+echo -e "            ${green}UBAH PORT${off}"
 echo -e "${cyan}======================================${off}"
 echo -e "${green}"
 echo -e "     1 ⸩  Ubah Port Stunnel4"
 echo -e "     2 ⸩  Ubah Port OpenVPN"
-echo -e "     3 ⸩  Ubah Port Trojan"
 echo -e ""
 echo -e " [\e[31m•0\e[0m] \e[31mBACK TO MENU\033[0m"
 echo ""
@@ -32,7 +31,6 @@ echo -e ""
 case $opt in
 1) clear ; port-ssl ; exit ;;
 2) clear ; port-ovpn ; exit ;;
-3) clear ; port-tr ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
 *) echo -e "" ; echo "Salah tekan ." ; sleep 1 ; port-change ;;
