@@ -59,4 +59,7 @@ echo "==============================="
 echo "Username  : $user"
 echo "Expired   : $exp4"
 echo "==============================="
-echo "Script Bagoes Vpn"
+echo ""
+read -n 1 -s -r -p "Press any key to back on menu"
+menu
+fi
