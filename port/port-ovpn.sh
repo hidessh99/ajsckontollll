@@ -156,4 +156,3 @@ menu
 echo "Anda salah tekan.."
 ;;
 esac
-
