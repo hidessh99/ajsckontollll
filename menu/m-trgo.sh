@@ -21,7 +21,7 @@ exit 0
 fi
 clear 
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;100;33m      • TROJAN Go MENU •          \E[0m"
+echo -e "\E[0;100;33m      • TROJAN GO MENU •          \E[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e " [\e[36m•1\e[0m] Create Account Trojan Go "
@@ -41,10 +41,10 @@ echo -e ""
 case $opt in
 1) clear ; addtrgo ;;
 2) clear ; trialtrojango ;;
-3) clear ; deltrgo ;;
-4) clear ; renewtrgo ;;
+3) clear ; renewtrgo ;;
+4) clear ; deltrgo ;;
 5) clear ; cektrgo ;;
 0) clear ; menu ;;
 x) exit ;;
-*) echo "Boh salah tekan, Sayang kedak Babi" ; sleep 1 ; m-trojan ;;
+*) echo "salah tekan" ; sleep 1 ; m-trojan ;;
 esac
