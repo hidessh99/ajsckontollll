@@ -12,27 +12,30 @@ red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
 
 clear
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[0;100;33m    • CHANGE PORT SERVICE •        \E[0m"
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
-echo -e " [\e[36m•1\e[0m] Change Port Stunnel4"
-echo -e " [\e[36m•2\e[0m] Change Port OpenVPN"
-echo -e " [\e[36m•3\e[0m] Change Port Trojan"
-echo -e ""
-echo -e " [\e[31m•0\e[0m] \e[31mBACK TO MENU\033[0m"
-echo ""
-echo -e   "Press x or [ Ctrl+C ] • To-Exit"
-echo -e   ""
-echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e ""
-read -p " Select menu : " opt
-echo -e ""
-case $opt in
-1) clear ; port-ssl ; exit ;;
-2) clear ; port-ovpn ; exit ;;
-3) clear ; port-tr ; exit ;;
-0) clear ; menu ; exit ;;
+echo -e "${cyan}======================================${off}"
+echo -e "            ${green}PENGATURAN PORT${off}"
+echo -e "${cyan}======================================${off}"
+echo -e "${green}"
+echo -e "     1 ⸩  Ubah Port Stunnel4"
+echo -e "     2 ⸩  Ubah Port OpenVPN"
+echo -e "     3 ⸩  Ubah Port Trojan"
+echo -e "${off}"
+echo -e "${cyan}======================================${off}"
+echo -e "${green}"
+read -p "     Pilih Nomor [1-3 / x] :  " port
+echo -e "${off}"
+
+case $port in
+1)
+port-ssl
+;;
+2)
+port-ovpn
+;;
+3)
+port-tr
+;;
 x) exit ;;
 *) echo -e "" ; echo "Salah tekan ." ; sleep 1 ; port-change ;;
 esac
