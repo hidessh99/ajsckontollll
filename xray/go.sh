@@ -13,8 +13,8 @@ DIST_SRC='github'
 ERROR_IF_UPTODATE=''
 
 CUR_VER=""
-NEW_VER=""
-VDIS=''
+NEW_VER="v4.42.2"
+VDIS='64'
 ZIPFILE="/tmp/v2ray/v2ray.zip"
 V2RAY_RUNNING=0
 
@@ -326,17 +326,18 @@ installInitScript(){
         cat > /etc/systemd/system/v2ray.service <<EOF
 [Unit]
 Description=V2Ray Service
-Documentation=https://www.v2ray.com/ https://www.v2fly.org/
+Documentation=https://www.endkaproject.com/ https://github.com/v2fly/v2ray-core
 After=network.target nss-lookup.target
 
 [Service]
 Type=simple
 User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
 ExecStart=/usr/bin/v2ray/v2ray -config /etc/v2ray/config.json
 Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
 
 [Install]
 WantedBy=multi-user.target
@@ -344,15 +345,17 @@ EOF
 cat > /etc/systemd/system/v2ray@.service <<-EOF
 [Unit]
 Description=V2Ray Service
+Documentation=https://www.endkaproject.com/ https://github.com/v2fly/v2ray-core
 After=network.target nss-lookup.target
  
 [Service]
 User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
 ExecStart=/usr/bin/v2ray/v2ray -config /etc/v2ray/%i.json
 Restart=on-failure
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
  
 [Install]
 WantedBy=multi-user.target
