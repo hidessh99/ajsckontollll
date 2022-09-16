@@ -119,17 +119,11 @@ systemctl restart v2ray
 systemctl enable v2ray
 cd /usr/bin
 wget -O add-tr "https://raw.githubusercontent.com/cak-donwori/new/main/add-tr.sh"
-wget -O xp-tr "https://raw.githubusercontent.com/cak-donwori/new/main/xp-tr.sh"
 chmod +x add-tr
-
-wget -O add-tr "https://raw.githubusercontent.com/cak-donwori/new/main/add-tr.sh"
-chmod +x add-tr
-
 
 
 #enc
 shc -r -f add-tr -o add-tr
-
 
 
 cd
