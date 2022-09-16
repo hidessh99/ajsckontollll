@@ -103,8 +103,8 @@ echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━�
 echo -e " [\e[36m•1\e[0m] SSH & OpenVPN Menu"
 echo -e " [\e[36m•2\e[0m] Vmess Menu"
 echo -e " [\e[36m•3\e[0m] Vless Menu"
-echo -e " [\e[36m•4\e[0m] Trojan Go Menu"
-echo -e " [\e[36m•5\e[0m] Trojan GRPC Menu"
+echo -e " [\e[36m•4\e[0m] Shadowsocks GRPC"
+echo -e " [\e[36m•5\e[0m] Trojan WSxGRPC"
 echo -e " [\e[36m•6\e[0m] SYSTEM Menu"
 echo -e " [\e[36m•7\e[0m] Status Service"
 echo -e " [\e[36m•8\e[0m] Clear RAM Cache"
@@ -122,7 +122,7 @@ case $opt in
 1) clear ; m-sshovpn ;;
 2) clear ; m-vmess ;;
 3) clear ; m-vless ;;
-4) clear ; m-trgo ;;
+4) clear ; m-ssws ;;
 5) clear ; m-trojan ;;
 6) clear ; m-system ;;
 7) clear ; running ;;
