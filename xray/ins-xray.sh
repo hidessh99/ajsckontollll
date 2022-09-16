@@ -513,12 +513,10 @@ wget -O del-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-t
 wget -O renew-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-tr.sh" && chmod +x renew-tr
 wget -O cek-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/cek-tr.sh" && chmod +x cek-tr
 
-# trojan go
-wget -O addtrgo "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/addtrgo.sh" && chmod +x addtrgo
-wget -O trialtrojango "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/trialtrojango.sh" && chmod +x trialtrojango
-wget -O deltrgo "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/deltrgo.sh" && chmod +x deltrgo
-wget -O renewtrgo "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renewtrgo.sh" && chmod +x renewtrgo
-wget -O cektrgo "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/cektrgo.sh" && chmod +x cektrgo
+# shadowsocks
+wget -O add-ssws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-ssws.sh" && chmod +x add-ssws
+wget -O del-ssws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-ssws.sh" && chmod +x del-ssws
+wget -O renew-ssws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-ssws.sh" && chmod +x renew-ssws
 
 
 sleep 1
