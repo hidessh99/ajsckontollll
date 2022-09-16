@@ -1,34 +1,58 @@
+]#!/bin/bash
+RED='\e[1;31m'
+GREEN='\e[0;32m'
+BLUE='\e[0;34m'
+NC='\e[0m'
+MYIP=$(wget -qO- ipinfo.io/ip);
+echo "Checking VPS"
+IZIN=$( curl https://raw.githubusercontent.com/cak-donwori/new/main/IP.txt | grep $MYIP )
+if [ $MYIP = $IZIN ]; then
+echo -e "${NC}${GREEN}Permission Accepted...${NC}"
+else
+echo -e "${NC}${RED}Permission Denied!${NC}";
+exit 0
+fi 
+
+clear
+uuid=$(cat /etc/trojan/uuid.txt)
 source /var/lib/premium-script/ipvps.conf
 if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/v2ray/domain)
 else
 domain=$IP
 fi
-until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do                read -rp "ชื่อ: " -e user
-                CLIENT_EXISTS=$(grep -w $user /etc/v2ray/trojan.json | wc -l)
+tr="$(cat ~/log-install.txt | grep -i Trojan | cut -d: -f2|sed 's/ //g')"
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+		read -rp "Username: " -e user
+		user_EXISTS=$(grep -w $user /etc/trojan/akun.conf | wc -l)
 
-                if [[ ${CLIENT_EXISTS} == '1' ]]; then
-                        echo ""
-                        echo " มีชื่อในระบบแล้ว โปรดเลือกชื่ออื่น."
-                        exit 1
-                fi
-        done
-uuid=$(cat /proc/sys/kernel/random/uuid)
-read -p "วันหมดอายุ (days): " masaaktif
+		if [[ ${user_EXISTS} == '1' ]]; then
+			echo ""
+			echo "Username already used"
+			exit 1
+		fi
+	done
+read -p "Expired (days): " masaaktif
+sed -i '/"'""password""'"$/a\,"'""$user""'"' /etc/trojan/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
-sed -i '/#tls$/a\### '"$user $exp"'\
-},{"password": "'""$user""'","email": "'""$user""'"' /etc/v2ray/trojan.json
-systemctl restart v2ray@trojan
-trojanlink="trojan://${user}@${domain}:443"
+echo -e "### $user $exp" >> /etc/trojan/akun.conf
+systemctl restart trojan
+echo -e "\033[32m[Info]\033[0m Trojan-GFW Start Successfully !"
+sleep 2
+trojanlink="trojan://${user}@${domain}:${tr}"
+trojanlink2="trojan://${user}@${MYIP}:${tr}"
 clear
-echo -e ""
-echo -e "********************************" 
-echo -e "           ข้อมูลบัญชี"   
-echo -e "ชื่อ          : ${user}"
-echo -e "โฮสต์        : ${domain}"
-echo -e "พอร์ต        : 443"
-echo -e "คีย์          : ${user}"
-echo -e "วันหมดอายุ    : $exp"
-echo -e "ลิงก์         : ${trojanlink}"
-echo -e "*********************************"
-echo -e "สคริปโดยเอเน้ต"
+echo -e "=================================" | lolcat
+echo -e "VPN TYPE       : TROJAN GFW"
+echo -e "=================================" | lolcat
+echo -e "Remarks        : ${user}"
+echo -e "Host           : ${domain}"
+echo -e "Port           : ${tr}"
+echo -e "Key            : ${user}"
+echo -e "Link           : ${trojanlink}"
+#echo -e "link2  		: ${trojanlink2}"
+echo -e "=================================" | lolcat
+echo -e "Expired On     : $exp"
+echo -e "=================================" | lolcat
+echo -e "~ BY HTTPS://WORLDSSH.TECH"
+echo ""
