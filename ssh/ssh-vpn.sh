@@ -281,7 +281,7 @@ wget -O m-vmess "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/m-vm
 wget -O m-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/m-vless.sh"
 wget -O running "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/running.sh"
 wget -O clearcache "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/clearcache.sh"
-wget -O m-trgo "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/m-ssws.sh"
+wget -O m-ssws "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/m-ssws.sh"
 wget -O m-trojan "https://raw.githubusercontent.com/sibeesans/ajsc/main/menu/m-trojan.sh"
 
 # menu ssh ovpn
