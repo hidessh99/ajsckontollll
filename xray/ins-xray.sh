@@ -84,7 +84,7 @@ cat > /etc/xray/config.json << END
   "log" : {
     "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
-    "loglevel": "info"
+    "loglevel": "warning"
   },
   "inbounds": [
       {
@@ -484,41 +484,21 @@ echo -e "$yell[SERVICE]$NC Restart All service"
 systemctl daemon-reload
 sleep 1
 echo -e "[ ${green}ok${NC} ] Enable & restart xray "
-systemctl daemon-reload
+systemctl daemin-reload
 systemctl enable xray
 systemctl restart xray
 systemctl restart nginx
 systemctl enable runn
 systemctl restart runn
 
-cd /usr/bin/
-# vmess
-wget -O add-ws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-ws.sh" && chmod +x add-ws
-wget -O trialvmess "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/trialvmess.sh" && chmod +x trialvmess
-wget -O renew-ws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-ws.sh" && chmod +x renew-ws
-wget -O del-ws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-ws.sh" && chmod +x del-ws
-wget -O cek-ws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/cek-ws.sh" && chmod +x cek-ws
-
-# vless
-wget -O add-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-vless.sh" && chmod +x add-vless
-wget -O trialvless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/trialvless.sh" && chmod +x trialvless
-wget -O renew-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-vless.sh" && chmod +x renew-vless
-wget -O del-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-vless.sh" && chmod +x del-vless
-wget -O cek-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/cek-vless.sh" && chmod +x cek-vless
-
-# trojan
-wget -O add-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-tr.sh" && chmod +x add-tr
-wget -O trialtrojan "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/trialtrojan.sh" && chmod +x trialtrojan
-wget -O del-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-tr.sh" && chmod +x del-tr
-wget -O renew-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-tr.sh" && chmod +x renew-tr
-wget -O cek-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/cek-tr.sh" && chmod +x cek-tr
-
-# shadowsocks
-wget -O add-ssws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-ssws.sh" && chmod +x add-ssws
-wget -O del-ssws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-ssws.sh" && chmod +x del-ssws
-wget -O renew-ssws "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-ssws.sh" && chmod +x renew-ssws
-
-
+wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/add-ws.sh" && chmod +x /usr/bin/add-ws
+wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/add-vless.sh" && chmod +x /usr/bin/add-vless
+wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/add-tr.sh" && chmod +x /usr/bin/add-tr
+wget -q -O /usr/bin/del-user "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/del-ws.sh" && chmod +x /usr/bin/del-user
+wget -q -O /usr/bin/cek-user "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/cek-ws.sh" && chmod +x /usr/bin/cek-ws
+wget -q -O /usr/bin/renew-user "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/renew-ws.sh" && chmod +x /usr/bin/renew-user
+wget -q -O /usr/bin/crtv2ray "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/crt.sh" && chmod +x /usr/bin/crtv2ray
+wget -q -O /usr/bin/add-ssws "https://raw.githubusercontent.com/sibeesans/tuunnel-mx/main/xray/add-ssws.sh" && chmod +x /usr/bin/add-ssws
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "xray/Vmess"
