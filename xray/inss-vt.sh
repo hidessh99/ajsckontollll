@@ -117,9 +117,10 @@ systemctl restart trojan
 systemctl enable trojan
 systemctl restart v2ray
 systemctl enable v2ray
+
 cd /usr/bin
-wget -O add-tr "https://raw.githubusercontent.com/cak-donwori/new/main/add-tr.sh"
-chmod +x add-tr
+wget -O add-trgw "https://raw.githubusercontent.com/sibeesans/main/xray/add-trgw.sh"
+chmod +x add-trgw
 
 
 #enc
@@ -128,9 +129,4 @@ shc -r -f add-tr -o add-tr
 
 cd
 mv /root/domain /etc/v2ray
-echo "59 23 * * * root xp-xr" >> /etc/crontab
-echo "59 23 * * * root xp-ws" >> /etc/crontab
-echo "59 23 * * * root xp-trgo" >> /etc/crontab
-echo "59 23 * * * root xp-vless" >> /etc/crontab
-echo "59 23 * * * root xp" >> /etc/crontab
 echo "0 0 * * * root clear-log reboot" >> /etc/crontab
