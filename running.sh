@@ -132,8 +132,8 @@ clear;clear;clear
 
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo -e "                ${YELLOW}(${NC}${GREEN} STATUS SERVICE INFORMATION ${NC}${YELLOW})${NC}"
-echo -e "         OWNER : ${GREEN}Bagoes Vpn ${NC}${YELLOW}(${NC} ${GREEN}Bagoes Vpn ${NC}${YELLOW})${NC}"
-echo -e "       © Copyright Bagoes Vpn ${YELLOW}(${NC} 2023-2033 ${YELLOW})${NC}"
+echo -e "         OWNER : ${GREEN}bagoes vpn ${NC}${YELLOW}(${NC} ${GREEN}bagoesvpn ${NC}${YELLOW})${NC}"
+echo -e "       © Copyright By bagoes vpn ${YELLOW}(${NC} 2021-2022 ${YELLOW})${NC}"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo ""
 echo -e "${RED_BG}                     Sytem Information                    ${NC}"
