@@ -37,9 +37,9 @@ echo -e ""
 read -p " Select menu : " opt
 echo -e ""
 case $opt in
-1) clear ; addssws ;;
-2) clear ; renewssws ;;
-3) clear ; delssws ;;
+1) clear ; add-ssws ;;
+2) clear ; renew-ssws ;;
+3) clear ; del-ssws ;;
 0) clear ; menu ;;
 x) exit ;;
 *) echo "salah tekan" ; sleep 1 ; m-ssws ;;
