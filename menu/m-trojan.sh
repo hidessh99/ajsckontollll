@@ -41,7 +41,7 @@ read -p " Select menu : " opt
 echo -e ""
 case $opt in
 1) clear ; add-tr ;;
-2) clear ; add-trgf ;;
+2) clear ; add-trgw ;;
 3) clear ; trialtrojan ;;
 4) clear ; renew-tr ;;
 5) clear ; del-tr ;;
