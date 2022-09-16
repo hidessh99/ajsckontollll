@@ -15,7 +15,7 @@ fi
 
 clear
 uuid=$(cat /etc/trojan/uuid.txt)
-source /var/lib/premium-script/ipvps.conf
+source /var/lib/SIJA /ipvps.conf
 if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/v2ray/domain)
 else
