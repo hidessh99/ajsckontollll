@@ -24,7 +24,7 @@ exit 0
 fi
 
 clear
-source /var/lib/scrz-prem/ipvps.conf
+source /var/lib/SIJA/ipvps.conf
 if [[ "$IP" = "" ]]; then
 domain=$(cat /etc/xray/domain)
 else
@@ -302,9 +302,9 @@ echo -e "Network : ws/grpc" | tee -a /etc/log-create-user.log
 echo -e "Path : /ss-ws" | tee -a /etc/log-create-user.log
 echo -e "ServiceName : ss-grpc" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link TLS : ${shadowsockslink}" | tee -a /etc/log-create-user.log
+echo -e "Link Ws : ${shadowsockslink}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
-echo -e "Link none TLS : ${shadowsockslink1}" | tee -a /etc/log-create-user.log
+echo -e "Link Grpc : ${shadowsockslink1}" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
 echo -e "Link JSON : http://${domain}/ss-$user.txt" | tee -a /etc/log-create-user.log
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" | tee -a /etc/log-create-user.log
