@@ -508,7 +508,6 @@ wget -O cek-vless "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/ce
 
 # trojan
 wget -O add-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-tr.sh" && chmod +x add-tr
-wget -O add-trgw "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/add-trgw.sh" && chmod +x add-trgw
 wget -O trialtrojan "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/trialtrojan.sh" && chmod +x trialtrojan
 wget -O del-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/del-tr.sh" && chmod +x del-tr
 wget -O renew-tr "https://raw.githubusercontent.com/sibeesans/ajsc/main/xray/renew-tr.sh" && chmod +x renew-tr
