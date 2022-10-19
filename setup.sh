@@ -307,3 +307,5 @@ exit 0
 else
 reboot
 fi
+
+#script gg
